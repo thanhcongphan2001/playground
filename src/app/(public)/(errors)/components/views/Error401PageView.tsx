@@ -2,14 +2,11 @@ import Typography from '@mui/material/Typography';
 import { motion } from 'motion/react';
 import Link from '@fuse/core/Link';
 import Box from '@mui/material/Box';
-import useUser from '@auth/useUser';
 
 /**
  * Error 401 page.
  */
 function Error401PageView() {
-	const { isGuest } = useUser();
-
 	return (
 		<div className="flex flex-1 flex-col items-center justify-center p-4">
 			<div className="w-full max-w-xl text-center">
@@ -212,21 +209,12 @@ function Error401PageView() {
 						You do not have permission to view this page.
 					</Typography>
 				</motion.div>
-				{!isGuest ? (
-					<Link
-						className="mt-12 block font-normal"
-						to="/"
-					>
-						Back to Home
-					</Link>
-				) : (
-					<Link
-						className="mt-12 block font-normal"
-						to="/sign-in"
-					>
-						Back to sign-in
-					</Link>
-				)}
+				<Link
+					className="mt-12 block font-normal"
+					to="/"
+				>
+					Back to Home
+				</Link>
 			</div>
 		</div>
 	);

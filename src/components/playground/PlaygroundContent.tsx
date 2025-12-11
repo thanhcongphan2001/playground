@@ -27,7 +27,7 @@ const apiCards: ApiCardData[] = [
 		title: 'Reverse API',
 		description: 'Xác định địa điểm từ tọa độ với Vietmap Reverse API',
 		icon: <LocateFixed className="h-5 w-5 text-white" />,
-		iconBgColor: 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
+		iconBgColor: 'linear-gradient(135deg, #2E90FA 0%, #1570EF 100%)',
 		features: [
 			{ text: 'Lấy thông tin địa điểm từ tọa độ' },
 			{ text: 'Hiển thị thông tin chi tiết địa điểm' },
@@ -43,7 +43,7 @@ const apiCards: ApiCardData[] = [
 		title: 'Geocoding API',
 		description: 'Chuyển đổi địa chỉ thành tọa độ với Vietmap Geocode API',
 		icon: <MapPin className="h-5 w-5 text-white" />,
-		iconBgColor: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)',
+		iconBgColor: 'linear-gradient(135deg, #2E90FA 0%, #1570EF 100%)',
 		features: [
 			{ text: 'Tìm tọa độ từ địa chỉ văn bản' },
 			{ text: 'Lọc kết quả theo tỉnh, quận, phường, tọa độ, v.v.' },
@@ -59,7 +59,7 @@ const apiCards: ApiCardData[] = [
 		title: 'Route API',
 		description: 'Tìm đường đi giữa các điểm với Vietmap Route API',
 		icon: <Navigation className="h-5 w-5 text-white" />,
-		iconBgColor: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+		iconBgColor: 'linear-gradient(135deg, #2E90FA 0%, #1570EF 100%)',
 		features: [
 			{ text: 'Tìm đường đi giữa 2 hoặc nhiều điểm/địa điểm' },
 			{ text: 'Tùy chọn phương tiện (ô tô, xe máy, đi bộ)' },

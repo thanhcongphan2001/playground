@@ -1,10 +1,9 @@
-import { useState, ReactNode, useMemo, useEffect, useCallback } from 'react';
+import { useState, ReactNode, useMemo, useCallback } from 'react';
 import _ from 'lodash';
 import { defaultSettings, getParsedQuerySettings } from '@fuse/default-settings';
 import settingsConfig from 'src/configs/settingsConfig';
 import themeLayoutConfigs from 'src/components/theme-layouts/themeLayoutConfigs';
 import { FuseSettingsConfigType, FuseThemesType } from '@fuse/core/FuseSettings/FuseSettings';
-import useUser from '@auth/useUser';
 import { PartialDeep } from 'type-fest';
 import FuseSettingsContext from './FuseSettingsContext';
 
@@ -34,27 +33,7 @@ const generateSettings = (
 
 // FuseSettingsProvider component
 export function FuseSettingsProvider({ children }: { children: ReactNode }) {
-	const { data: user, isGuest } = useUser();
-
-	const userSettings = useMemo(() => user?.settings || {}, [user]);
-
-	const calculateSettings = useCallback(() => {
-		const defaultSettings = _.merge({}, initialSettings);
-		return isGuest ? defaultSettings : _.merge({}, defaultSettings, userSettings);
-	}, [isGuest, userSettings]);
-
-	const [data, setData] = useState<FuseSettingsConfigType>(calculateSettings());
-
-	// Sync data with userSettings when isGuest or userSettings change
-	useEffect(() => {
-		const newSettings = calculateSettings();
-
-		// Only update if settings are different
-		if (!_.isEqual(data, newSettings)) {
-			setData(newSettings);
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [calculateSettings]);
+	const [data, setData] = useState<FuseSettingsConfigType>(_.merge({}, initialSettings));
 
 	const setSettings = useCallback(
 		(newSettings: Partial<FuseSettingsConfigType>) => {

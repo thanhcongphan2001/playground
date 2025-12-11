@@ -4,14 +4,11 @@ import Button from '@mui/material/Button';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { darken } from '@mui/material/styles';
 import PageBreadcrumb from 'src/components/PageBreadcrumb';
-import useUser from '@auth/useUser';
 
 /**
  * The ProjectDashboardAppHeader page.
  */
 function ProjectDashboardAppHeader() {
-	const { data: user, isGuest } = useUser();
-
 	return (
 		<div className="flex flex-auto flex-col px-4 pt-4 sm:px-8">
 			<PageBreadcrumb className="mb-2" />
@@ -24,13 +21,12 @@ function ProjectDashboardAppHeader() {
 						})}
 						className="h-12 w-12 shrink-0"
 						alt="user photo"
-						src={user?.photoURL}
 					>
-						{user?.displayName?.[0]}
+						G
 					</Avatar>
 					<div className="flex min-w-0 flex-col">
 						<Typography className="truncate text-xl leading-7 font-semibold tracking-tight md:text-3xl md:leading-[1.375]">
-							{isGuest ? 'Hi Guest!' : `Welcome back, ${user?.displayName || user?.email}!`}
+							Welcome!
 						</Typography>
 
 						<div className="flex items-center gap-1">

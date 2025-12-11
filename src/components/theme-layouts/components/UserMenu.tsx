@@ -8,10 +8,8 @@ import { useState } from 'react';
 import Link from '@fuse/core/Link';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import { darken } from '@mui/material/styles';
-import Tooltip from '@mui/material/Tooltip';
 import clsx from 'clsx';
 import Popover, { PopoverProps } from '@mui/material/Popover';
-import useUser from '@auth/useUser';
 
 type UserMenuProps = {
 	className?: string;
@@ -26,8 +24,8 @@ type UserMenuProps = {
  */
 function UserMenu(props: UserMenuProps) {
 	const { className, popoverProps, arrowIcon = 'lucide:chevron-up', dense = false, onlyAvatar = false } = props;
-	const { data: user, signOut, isGuest } = useUser();
 	const [userMenu, setUserMenu] = useState<HTMLElement | null>(null);
+
 	const userMenuClick = (event: React.MouseEvent<HTMLElement>) => {
 		setUserMenu(event.currentTarget);
 	};
@@ -35,10 +33,6 @@ function UserMenu(props: UserMenuProps) {
 	const userMenuClose = () => {
 		setUserMenu(null);
 	};
-
-	if (!user) {
-		return null;
-	}
 
 	return (
 		<>
@@ -51,28 +45,15 @@ function UserMenu(props: UserMenuProps) {
 				onClick={userMenuClick}
 				color="inherit"
 			>
-				{user?.photoURL ? (
-					<Avatar
-						sx={(theme) => ({
-							background: theme.vars.palette.background.default,
-							color: theme.vars.palette.text.secondary
-						})}
-						className={clsx('avatar rounded-lg', dense ? 'h-7 w-7' : 'h-10 w-10')}
-						alt="user photo"
-						src={user?.photoURL}
-						variant="rounded"
-					/>
-				) : (
-					<Avatar
-						sx={(theme) => ({
-							background: (theme) => darken(theme.palette.background.default, 0.05),
-							color: theme.vars.palette.text.secondary
-						})}
-						className={clsx('avatar h-10 w-10', dense && 'h-8 w-8')}
-					>
-						{user?.displayName?.[0]}
-					</Avatar>
-				)}
+				<Avatar
+					sx={(theme) => ({
+						background: (theme) => darken(theme.palette.background.default, 0.05),
+						color: theme.vars.palette.text.secondary
+					})}
+					className={clsx('avatar h-10 w-10', dense && 'h-8 w-8')}
+				>
+					G
+				</Avatar>
 				{!onlyAvatar && (
 					<>
 						<div className={clsx('flex flex-auto flex-col', dense ? '' : 'gap-2')}>
@@ -83,30 +64,10 @@ function UserMenu(props: UserMenuProps) {
 									dense ? 'text-md' : 'text-base'
 								)}
 							>
-								{user?.displayName}
-							</Typography>
-							<Typography
-								className={clsx(
-									'flex leading-none font-medium tracking-tighter',
-									dense ? 'text-sm' : 'text-md'
-								)}
-								color="text.secondary"
-							>
-								{user?.email}
+								Guest
 							</Typography>
 						</div>
 						<div className="flex shrink-0 items-center gap-2">
-							<Tooltip
-								title={
-									<>
-										{user.role?.toString()}
-										{(!user.role || (Array.isArray(user.role) && user.role.length === 0)) &&
-											'Guest'}
-									</>
-								}
-							>
-								<FuseSvgIcon className="info-icon">lucide:info</FuseSvgIcon>
-							</Tooltip>
 							<FuseSvgIcon
 								className="arrow"
 								size={13}
@@ -134,65 +95,28 @@ function UserMenu(props: UserMenuProps) {
 				}}
 				{...popoverProps}
 			>
-				{isGuest ? (
-					<>
-						<MenuItem
-							component={Link}
-							to="/sign-in"
-							role="button"
-						>
-							<ListItemIcon>
-								<FuseSvgIcon>lucide:lock</FuseSvgIcon>
-							</ListItemIcon>
-							<ListItemText primary="Sign In" />
-						</MenuItem>
-						<MenuItem
-							component={Link}
-							to="/sign-up"
-							role="button"
-						>
-							<ListItemIcon>
-								<FuseSvgIcon>lucide:user-plus</FuseSvgIcon>
-							</ListItemIcon>
-							<ListItemText primary="Sign up" />
-						</MenuItem>
-					</>
-				) : (
-					<>
-						<MenuItem
-							component={Link}
-							to="/apps/profile"
-							onClick={userMenuClose}
-							role="button"
-						>
-							<ListItemIcon>
-								<FuseSvgIcon>lucide:circle-user</FuseSvgIcon>
-							</ListItemIcon>
-							<ListItemText primary="My Profile" />
-						</MenuItem>
-						<MenuItem
-							component={Link}
-							to="/apps/mailbox"
-							onClick={userMenuClose}
-							role="button"
-						>
-							<ListItemIcon>
-								<FuseSvgIcon>lucide:mail</FuseSvgIcon>
-							</ListItemIcon>
-							<ListItemText primary="Inbox" />
-						</MenuItem>
-						<MenuItem
-							onClick={() => {
-								signOut();
-							}}
-						>
-							<ListItemIcon>
-								<FuseSvgIcon>lucide:square-arrow-right</FuseSvgIcon>
-							</ListItemIcon>
-							<ListItemText primary="Sign out" />
-						</MenuItem>
-					</>
-				)}
+				<MenuItem
+					component={Link}
+					to="/apps/profile"
+					onClick={userMenuClose}
+					role="button"
+				>
+					<ListItemIcon>
+						<FuseSvgIcon>lucide:circle-user</FuseSvgIcon>
+					</ListItemIcon>
+					<ListItemText primary="My Profile" />
+				</MenuItem>
+				<MenuItem
+					component={Link}
+					to="/apps/mailbox"
+					onClick={userMenuClose}
+					role="button"
+				>
+					<ListItemIcon>
+						<FuseSvgIcon>lucide:mail</FuseSvgIcon>
+					</ListItemIcon>
+					<ListItemText primary="Inbox" />
+				</MenuItem>
 			</Popover>
 		</>
 	);

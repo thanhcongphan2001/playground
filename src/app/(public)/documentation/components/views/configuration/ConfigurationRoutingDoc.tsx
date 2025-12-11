@@ -125,36 +125,6 @@ function ConfigurationRoutingDoc() {
 				variant="h5"
 				className="mt-8 mb-5 font-bold"
 			>
-				Route Access Restriction with AuthGuardRedirect
-			</Typography>
-
-			<Typography
-				className="mb-4"
-				component="p"
-			>
-				Fuse React includes an <code>AuthGuardRedirect</code> component that can be used to restrict access to
-				certain routes based on user roles. Here's an example of how to use it in a control panel layout:
-			</Typography>
-
-			<FuseHighlight
-				component="pre"
-				className="language-typescript mb-6"
-			>
-				{controlPanelLayoutRaw}
-			</FuseHighlight>
-
-			<Typography
-				className="mb-4"
-				component="p"
-			>
-				In this example, access to all routes under the (control-panel) group is restricted to users with the
-				'admin' role. If a user without the required role tries to access these routes, they will be redirected.
-			</Typography>
-
-			<Typography
-				variant="h5"
-				className="mt-8 mb-5 font-bold"
-			>
 				Best Practices
 			</Typography>
 
@@ -171,10 +141,6 @@ function ConfigurationRoutingDoc() {
 					duplication.
 				</li>
 				<li>
-					Utilize the <code>AuthGuardRedirect</code> component to implement role-based access control for your
-					routes.
-				</li>
-				<li>
 					Take advantage of Next.js 13 features like server components and streaming for improved performance
 					and user experience.
 				</li>
@@ -184,9 +150,8 @@ function ConfigurationRoutingDoc() {
 				className="mt-8 mb-4"
 				component="p"
 			>
-				By leveraging Next.js App Router and Fuse React's custom components like <code>MainLayout</code> and{' '}
-				<code>AuthGuardRedirect</code>, you can create a powerful, flexible, and secure routing system for your
-				application.
+				By leveraging Next.js App Router and Fuse React's custom components like <code>MainLayout</code>, you
+				can create a powerful, flexible routing system for your application.
 			</Typography>
 		</>
 	);

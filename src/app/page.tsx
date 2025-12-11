@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 
 function MainPage() {
-	redirect(`/dashboards/project`);
+	redirect(`/playground`);
 	return null;
 }
 

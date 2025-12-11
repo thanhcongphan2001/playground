@@ -6,7 +6,7 @@ import 'maplibre-gl/dist/maplibre-gl.css';
 
 // VietMap raster tiles configuration
 const VIETMAP_TILES_URL =
-	'https://maps.ots.vn/api/v1/tiles/basic/{z}/{x}/{y}/png?apikey=hSGqLq0OGhVLsMAnVIzsXcxo8nsVyyCNlua';
+	'https://maps.ots.vn/api/v1/tiles/basic/{z}/{x}/{y}/png?apikey=hSGqLq0OGhVLsMAnVIzsXcxo8nsVyyCNlu';
 
 // Default map style using raster tiles
 const mapStyle = {
@@ -127,15 +127,6 @@ export function MapView({
 					position="top-right"
 					showCompass={true}
 					showZoom={true}
-				/>
-			)}
-
-			{/* Scale Control */}
-			{showScale && (
-				<ScaleControl
-					position="bottom-left"
-					maxWidth={100}
-					unit="metric"
 				/>
 			)}
 

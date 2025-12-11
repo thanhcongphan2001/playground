@@ -1,10 +1,11 @@
 import _ from 'lodash';
 import * as colors from '@mui/material/colors';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
-import { User } from '@auth/user';
 import { DeepPartial } from 'react-hook-form';
 import { PartialDeep } from 'type-fest';
 import EventEmitter from './EventEmitter';
+
+type UserRole = string[] | string | null;
 
 type TreeNode = {
 	id: string;
@@ -363,7 +364,7 @@ class FuseUtils {
 	/**
 	 * The hasPermission function checks if a user has permission to access a resource.
 	 */
-	static hasPermission(authArr: string[] | string | undefined, userRole: User['role']): boolean {
+	static hasPermission(authArr: string[] | string | undefined, userRole: UserRole): boolean {
 		/**
 		 * If auth array is not defined
 		 * Pass and allow

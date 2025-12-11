@@ -7,7 +7,6 @@ import { useSwipeable } from 'react-swipeable';
 import FuseSvgIcon from '@fuse/core/FuseSvgIcon';
 import SettingsPanel from 'src/components/theme-layouts/components/configurator/SettingsPanel';
 import ThemesPanel from 'src/components/theme-layouts/components/configurator/ThemesPanel';
-import useUser from '@auth/useUser';
 
 const Root = styled('div')(({ theme }) => ({
 	position: 'absolute',
@@ -50,7 +49,6 @@ const Root = styled('div')(({ theme }) => ({
  */
 function Configurator() {
 	const theme = useTheme();
-	const { isGuest } = useUser();
 	const [open, setOpen] = useState('');
 
 	const handlerOptions = {
@@ -68,10 +66,6 @@ function Configurator() {
 	const handleClose = () => {
 		setOpen('');
 	};
-
-	if (isGuest) {
-		return null;
-	}
 
 	return (
 		<>

@@ -14,16 +14,12 @@ const settingsConfig: FuseSettingsConfigType = {
 		/**
 		 * The style property defines the layout style for the application.
 		 */
-		style: 'layout1', // layout1 layout2 layout3
+		style: 'layoutGround', // layout1 layout2 layout3 layoutGround
 		/**
 		 * The config property defines the layout configuration for the application.
 		 * Check out default layout configs at src/components/theme-layouts for example src/components/theme-layouts/layout1/Layout1Config.js
 		 */
-		config: {
-			navbar: {
-				style: 'style-1'
-			}
-		} // checkout default layout configs at src/components/theme-layouts for example  src/components/theme-layouts/layout1/Layout1Config.js
+		config: {} // checkout default layout configs at src/components/theme-layouts for example  src/components/theme-layouts/layout1/Layout1Config.js
 	},
 
 	/**
